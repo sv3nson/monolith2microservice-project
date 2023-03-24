@@ -19,3 +19,10 @@ spec:
         image:  sv3nson/udagram-frontend:v3
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"      

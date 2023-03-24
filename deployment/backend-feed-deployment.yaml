@@ -5,10 +5,15 @@ metadata:
     service: backend-feed
   name: backend-feed
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       service: backend-feed
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -20,7 +25,7 @@ spec:
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "2048Mi"
+            memory: "1024Mi"
             cpu: "500m"
           limits:
             memory: "2048Mi"
